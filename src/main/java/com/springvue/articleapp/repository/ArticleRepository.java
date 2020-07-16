@@ -1,6 +1,6 @@
-package com.springvue.movieapp.repository;
+package com.springvue.articleapp.repository;
 
-import com.springvue.movieapp.model.Article;
+import com.springvue.articleapp.model.Article;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ArticleRepository extends JpaRepository<Article, Integer>{

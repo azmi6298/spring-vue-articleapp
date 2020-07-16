@@ -1,4 +1,4 @@
-package com.springvue.movieapp.model;
+package com.springvue.articleapp.model;
 
 import java.time.Instant;
 

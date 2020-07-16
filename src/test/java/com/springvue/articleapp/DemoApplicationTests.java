@@ -1,4 +1,4 @@
-package com.springvue.movieapp;
+package com.springvue.articleapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

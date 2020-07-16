@@ -1,4 +1,4 @@
-package com.springvue.movieapp;
+package com.springvue.articleapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

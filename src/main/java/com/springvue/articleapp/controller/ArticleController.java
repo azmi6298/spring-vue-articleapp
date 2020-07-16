@@ -1,8 +1,8 @@
-package com.springvue.movieapp.controller;
+package com.springvue.articleapp.controller;
 
 import java.util.Optional;
-import com.springvue.movieapp.model.Article;
-import com.springvue.movieapp.repository.ArticleRepository;
+import com.springvue.articleapp.model.Article;
+import com.springvue.articleapp.repository.ArticleRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
