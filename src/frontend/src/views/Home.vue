@@ -6,7 +6,7 @@
         <router-link 
           :title="article.title"
           :to="{ 
-            name: 'article', 
+            name: 'editArticle', 
             params: { id : article.id }
           }"
         >

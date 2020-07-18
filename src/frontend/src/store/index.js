@@ -41,9 +41,9 @@ export default new Vuex.Store({
     },
     async getCurrentArticle({ commit }, articleId) {
       const response = await axios.get(`${url}${articleId}`)
+      console.log(response.data)
       commit('GET_CURRENT_ARTICLE', response.data)
     },
-
     async getAscendingArticles({ commit }) {
       const response = await axios.get(`${url}publishedAsc`)
       commit('GET_ASC_ARTICLES', response.data)

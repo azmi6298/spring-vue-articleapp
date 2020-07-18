@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Controller
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin
 
 @RequestMapping("/api/v1/articles")
 
