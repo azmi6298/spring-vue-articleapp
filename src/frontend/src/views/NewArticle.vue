@@ -1,16 +1,16 @@
 <template>
   <div>
-    <ArticleComponent />
+    <FormComponent />
   </div>
 </template>
 
 <script>
-import ArticleComponent from '../components/ArticleComponent'
+import FormComponent from '../components/FormComponent'
 
 export default {
   name: 'NewArticle',
   components: {
-    ArticleComponent
+    FormComponent
   }
 }
 </script>

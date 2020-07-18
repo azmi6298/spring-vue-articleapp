@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ArticleComponent 
+    <FormComponent 
       :id="$route.params.id"
     />
   </div>
@@ -8,11 +8,11 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
-import ArticleComponent from '../components/ArticleComponent'
+import FormComponent from '../components/FormComponent'
 export default {
   name: 'EditArticle',
   components: {
-    ArticleComponent
+    FormComponent
   },
   created() {
     this.getCurrentArticle(this.$route.params.id)

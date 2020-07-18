@@ -38,7 +38,7 @@
 import {mapActions, mapGetters} from 'vuex'
 import _ from 'lodash'
 export default {
-  name: "ArticleComponent",
+  name: "FormComponent",
   props: ['id'],
   data() {
     return {
