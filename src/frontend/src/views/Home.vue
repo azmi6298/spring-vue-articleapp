@@ -30,10 +30,5 @@ export default {
   computed: {
     ...mapGetters(['allArticles'])
   },
-  // watch: {
-  //   $route() {
-  //     this.getAllArticles()
-  //   }
-  // }
 }
 </script>

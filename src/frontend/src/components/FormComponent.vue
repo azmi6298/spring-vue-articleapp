@@ -52,28 +52,7 @@ export default {
       showDeletedAlert: false
     }
   },
-  created() {
-    this.getCurrentArticle(this.id)
-  },
-  computed: {
-    ...mapGetters(['currentArticle']),
-    selectedArticle() {
-      return this.currentArticle
-    },
-    formTitle() {
-      if(this.id  != undefined) {
-        return "Update Article"
-      } else {
-        return "Create New Article"
-      }
-    },
-  },
-  watch: {
-    selectedArticle(n) {
-      this.article = _.cloneDeep(n)
-    }
-  },
-  methods: {
+   methods: {
     ...mapActions(['addArticle', 'updateArticle', 'deleteArticle', 'getCurrentArticle']),
     saveArticle() {
       this.addArticle(this.article)
@@ -94,5 +73,26 @@ export default {
       this.showSavedAlert = true
     },
   },
+  created() {
+    this.getCurrentArticle(this.id)
+  },
+  computed: {
+    ...mapGetters(['currentArticle']),
+    selectedArticle() {
+      return this.currentArticle
+    },
+    formTitle() {
+      if(this.id  != undefined) {
+        return "Update Article"
+      } else {
+        return "Create New Article"
+      }
+    },
+  },
+  watch: {
+    selectedArticle(n) {
+      this.article = _.cloneDeep(n)
+    }
+  }
 }
 </script>

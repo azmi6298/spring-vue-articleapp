@@ -14,14 +14,14 @@ export default {
   components: {
     FormComponent
   },
+  methods: {
+    ...mapActions(['getCurrentArticle']),
+  },
   created() {
     this.getCurrentArticle(this.$route.params.id)
   },
   computed: {
     ...mapGetters(['currentArticle']),
-  },
-  methods: {
-    ...mapActions(['getCurrentArticle']),
   }
 }
 </script>
