@@ -60,6 +60,4 @@ public class Article {
   public void setPublished(Long published) {
     this.published = published;
   }
-
-
 }
