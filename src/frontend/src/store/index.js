@@ -30,8 +30,8 @@ export default new Vuex.Store({
       Vue.set(...state.articles, index, updatedArticle)
     },
     DELETE_ARTICLE: (state, deletedArticle) => {
-      let filteredArticles = state.articles.filter( article => article.id != deletedArticle.id)
-      state.articles = filteredArticles
+      const index = state.articles.findIndex( article => article.id == deletedArticle.id )
+      state.articles.splice(index, 1)
     }
   },
   actions: {
@@ -41,7 +41,6 @@ export default new Vuex.Store({
     },
     async getCurrentArticle({ commit }, articleId) {
       const response = await axios.get(`${url}${articleId}`)
-      console.log(response.data)
       commit('GET_CURRENT_ARTICLE', response.data)
     },
     async getAscendingArticles({ commit }) {
@@ -58,7 +57,6 @@ export default new Vuex.Store({
         content: articleData['content']
       })
 
-      console.log(response)
       commit('ADD_ARTICLE', response.data)
     },
     async updateArticle({ commit }, articleData) {
@@ -66,7 +64,6 @@ export default new Vuex.Store({
         title: articleData['title'],
         content: articleData['content']
       })
-
       commit('UPDATE_ARTICLE', response.data)
     },
     async deleteArticle({ commit }, articleId) {

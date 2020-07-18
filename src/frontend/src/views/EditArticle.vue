@@ -1,10 +1,7 @@
 <template>
   <div>
     <ArticleComponent 
-      :id="$route.params.id" 
-      :title="currentArticle.title"
-      :content="currentArticle.content"
-      :published="currentArticle.published"
+      :id="$route.params.id"
     />
   </div>
 </template>

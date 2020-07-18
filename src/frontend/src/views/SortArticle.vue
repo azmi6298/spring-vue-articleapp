@@ -30,7 +30,7 @@ export default {
   created() {
     this.getAscendingArticles()
     this.getDescendingArticles()
-    this.$set(this.articles, this.ascendingArticles)
+    this.sortAscending()
   },
   computed: {
     ...mapGetters(['ascendingArticles','descendingArticles'])

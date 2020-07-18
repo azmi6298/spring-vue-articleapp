@@ -1,25 +1,30 @@
 <template>
   <div>
     <h1>{{ formTitle }}</h1>
+    <b-alert v-model="showSavedAlert" variant="success" dismissible>
+      Article saved!
+    </b-alert>
+
+    <b-alert v-model="showDeletedAlert" variant="danger" dismissible>
+      Article deleted!
+    </b-alert>
+
     <b-form @submit.prevent="onSubmit">
-      <b-form-group id="input-group-2" label="Title:">
+      <b-form-group label="Title:">
         <b-form-input
-          :value="title"
-          @input="updateTitle"
+          v-model="article.title"
           placeholder="Enter Title"
         ></b-form-input>
       </b-form-group>
-      <b-form-group id="input-group-2" label="Content:">
+      <b-form-group label="Content:">
         <b-form-textarea
-          :value="content"
-          @input="updateContent"
+          v-model="article.content"
           placeholder="Enter Content"
         ></b-form-textarea>
       </b-form-group>
-      <b-form-group id="input-group-2" label="Published:" v-if="this.$route.params.id != undefined">
+      <b-form-group label="Published:" v-if="this.$route.params.id != undefined">
         <b-form-input
-          :value="published"
-          @input="updatePublished"
+          v-model="article.published"
           placeholder="Enter Published Date"
         ></b-form-input>
       </b-form-group>
@@ -30,10 +35,11 @@
 </template>
 
 <script>
-import {mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
+import _ from 'lodash'
 export default {
   name: "ArticleComponent",
-  props: ['id', 'title', 'content', 'published'],
+  props: ['id'],
   data() {
     return {
       article: {
@@ -41,16 +47,19 @@ export default {
         title: '',
         content: '',
         published: ''
-      }
+      },
+      showSavedAlert: false,
+      showDeletedAlert: false
     }
   },
   created() {
-    this.$set(this.article, 'id', this.id)
-    this.$set(this.article, 'title', this.title)
-    this.$set(this.article, 'content', this.content)
-    this.$set(this.article, 'published', this.published)
+    this.getCurrentArticle(this.id)
   },
   computed: {
+    ...mapGetters(['currentArticle']),
+    selectedArticle() {
+      return this.currentArticle
+    },
     formTitle() {
       if(this.id  != undefined) {
         return "Update Article"
@@ -59,36 +68,30 @@ export default {
       }
     },
   },
+  watch: {
+    selectedArticle(n) {
+      this.article = _.cloneDeep(n)
+    }
+  },
   methods: {
     ...mapActions(['addArticle', 'updateArticle', 'deleteArticle', 'getCurrentArticle']),
-    updateTitle(value) {
-      this.article.title = value
-    },
-    updateContent(value) {
-      this.article.content = value
-    },
-    updatePublished(value) {
-      this.article.published = value
-    },
     saveArticle() {
       this.addArticle(this.article)
-      this.$router.push({ name: 'home' })
     },
     changeArticle() {
       this.updateArticle(this.article)
-      this.$router.push({ name: 'home' })
     },
     removeArticle() {
       this.deleteArticle(this.id)
-      this.$router.push({ name: 'home' })
+      this.showDeletedAlert = true
     },
     onSubmit() {
       if(this.$route.params.id == undefined) {
         this.saveArticle()
       } else {
-        console.log(this.article)
-        this.changeArticle(this.article)
+        this.changeArticle()
       }
+      this.showSavedAlert = true
     },
   },
 }
